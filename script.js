@@ -5,14 +5,15 @@ async function generateMeal() {
     const loading = document.getElementById('loading');
     const btn = document.getElementById('generateBtn');
 
-    // مفتاحك سليم
-    const API_KEY = "api_key"; 
+    // تأكد إن المفتاح ده هو اللي ظاهر في صفحة API Keys عندك
+    const API_KEY = "71utW2oq4OTebDw2EavzhiAwPynKz0f5TTkdRgHL"; 
     const API_URL = "https://api.cohere.ai/v1/chat"; 
 
     resultDiv.innerText = "";
     loading.style.display = "block";
     btn.disabled = true;
 
+    // التعليمات الدقيقة من صور نظام الطيبات
     const promptText = `أنت الآن مساعد متخصص في "نظام الطيبات" للدكتور ضياء العوضي.
 يجب أن تلتزم بالقواعد التالية بدقة شديدة بناءً على دستور النظام:
 
@@ -41,8 +42,7 @@ async function generateMeal() {
             },
             body: JSON.stringify({
                 message: promptText,
-                // الموديلات المتاحة حالياً (اختر واحد منهم)
-                model: "command-r-08-2024" // أو جرب "command-r-plus"
+                model: "command-r-08-2024" 
             })
         });
 
@@ -51,12 +51,12 @@ async function generateMeal() {
         if (data.text) {
             resultDiv.innerText = data.text;
         } else {
-            // في حالة وجود رسالة خطأ من السيرفر بخصوص الموديل
-            resultDiv.innerText = "السيرفر لم يرسل نصاً. تحقق من اسم الموديل في الـ Console.";
-            console.log("Response Data:", data);
+            // لو المفتاح لسه فيه مشكلة هيطبع الرسالة دي
+            resultDiv.innerText = "المفتاح غير صحيح أو الرصيد انتهى. راجع صفحة الـ API Keys.";
+            console.log("Error Detail:", data);
         }
     } catch (error) {
-        resultDiv.innerText = "خطأ في الاتصال! تأكد من تفعيل إضافة CORS Unblock.";
+        resultDiv.innerText = "خطأ في الاتصال! فعل إضافة CORS Unblock.";
     } finally {
         loading.style.display = "none";
         btn.disabled = false;
