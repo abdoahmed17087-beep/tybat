@@ -16,13 +16,11 @@
 }
 
 body {
-    /* 1. الخلفية الجديدة والمميزة */
-    background-color: var(--bg-light);
-    background-image: url('bg-pattern.png'); /* حط صورة النمط الهادئ هنا */
-    background-size: cover;
-    background-attachment: fixed;
+    /* تدرج لوني احترافي يجمع بين الكحلي الغامق والأخضر */
+    background: linear-gradient(135deg, #1B262C 0%, #0F4C75 50%, #4E9F3D 100%);
+    background-attachment: fixed; /* عشان الخلفية تفضل ثابتة وأنت بتعمل سكرول */
     
-    font-family: 'Cairo', sans-serif; /* استخدام خط القاهرة الأنيق */
+    font-family: 'Cairo', sans-serif;
     color: var(--text-color);
     display: flex;
     justify-content: center;
@@ -30,6 +28,7 @@ body {
     min-height: 100vh;
     direction: rtl;
     padding: 20px;
+    overflow-x: hidden;
 }
 
 .container {
