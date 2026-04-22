@@ -1,5 +1,157 @@
-body { background: #f4f7f6; font-family: sans-serif; display: flex; justify-content: center; padding-top: 50px; direction: rtl; }
-.main-card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); width: 350px; text-align: center; }
-.btn-primary { background: #1B262C; color: white; border: none; padding: 15px; border-radius: 10px; width: 100%; cursor: pointer; font-weight: bold; }
-.result-area { margin-top: 20px; text-align: right; line-height: 1.6; color: #333; }
-.loader { color: #4E9F3D; margin-top: 10px; font-weight: bold; }
+/* الألوان الأساسية المستوحاة من مشروعك */
+:root {
+    --primary-dark: #1B262C; /* اللون الكحلي الغامق اللي في الأندرويد ستوديو */
+    --accent-green: #4E9F3D; /* اللون الأخضر الصحي */
+    --light-bg: #F9F9F9;
+    --text-color: #333;
+    --white: #ffffff;
+    --shadow: 0 15px 35px rgba(0,0,0,0.1);
+    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--light-bg);
+    background-image: radial-gradient(#4e9f3d10 1px, transparent 1px); /* خلفية منقطة خفيفة */
+    background-size: 30px 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    direction: rtl;
+}
+
+.container {
+    width: 95%;
+    max-width: 500px;
+    perspective: 1000px;
+}
+
+/* تصميم الكارت الرئيسي */
+.main-card {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: 30px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    border-top: 8px solid var(--accent-green);
+    transform: translateY(0);
+    transition: var(--transition);
+}
+
+.main-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+}
+
+/* الأيقونة العلوية */
+.icon-box {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    display: inline-block;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
+    animation: floating 3s ease-in-out infinite;
+}
+
+h1 {
+    color: var(--primary-dark);
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+
+.tagline {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+}
+
+/* الزرار الاحترافي */
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-green), #3d8a2e);
+    color: white;
+    border: none;
+    padding: 18px 30px;
+    border-radius: 15px;
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(78, 159, 61, 0.3);
+    transition: var(--transition);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 12px 25px rgba(78, 159, 61, 0.4);
+    transform: scale(1.02);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+/* منطقة النتيجة */
+.result-area {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f8fff6;
+    border-right: 4px solid var(--accent-green);
+    border-radius: 10px;
+    text-align: right;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #444;
+    min-height: 100px;
+    transition: var(--transition);
+}
+
+/* الأنيميشن الخاص بالتحميل */
+.loader {
+    margin-top: 20px;
+    color: var(--accent-green);
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.loader::after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    border: 3px solid #ddd;
+    border-top: 3px solid var(--accent-green);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* جعل التصميم متجاوب مع الموبايل */
+@media (max-width: 480px) {
+    .main-card {
+        padding: 30px 20px;
+    }
+    h1 { font-size: 1.8rem; }
+}
