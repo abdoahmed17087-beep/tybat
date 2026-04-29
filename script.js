@@ -1,4 +1,6 @@
 async function generateMeal() {
+    console.log("الزر يعمل وتم الضغط عليه!"); // أضف هذا السطر
+    const resultDiv = document.getElementById('mealResult');
     const resultDiv = document.getElementById('mealResult');
     const loading = document.getElementById('loading');
     const btn = document.getElementById('generateBtn');
