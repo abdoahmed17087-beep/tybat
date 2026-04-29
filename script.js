@@ -7,7 +7,7 @@ async function askAI() {
     
     if (!userInput) return alert("من فضلك اكتب سؤالك!");
 
-    const API_KEY = "API_KEY"; // ضع مفتاحك هنا
+    const API_KEY = "YOUR_API_KEY_HERE"; // ضع مفتاحك هنا
     const API_URL = "https://api.cohere.ai/v1/chat"; 
 
     // التعليمات الثابتة (النظام)
