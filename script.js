@@ -1,19 +1,19 @@
+document.getElementById('generateBtn').addEventListener('click', generateMeal);
+
 async function generateMeal() {
-    console.log("الزر يعمل وتم الضغط عليه!"); // أضف هذا السطر
-    const resultDiv = document.getElementById('mealResult');
     const resultDiv = document.getElementById('mealResult');
     const loading = document.getElementById('loading');
     const btn = document.getElementById('generateBtn');
 
-    // تذكر: لا تضع مفتاحك هنا في النسخة النهائية المرفوعة على الإنترنت
+    // تأكد أن المفتاح هنا هو مفتاح Cohere الصحيح
     const API_KEY = "API_KEY"; 
     const API_URL = "https://api.cohere.ai/v1/chat"; 
 
-    // السؤال الافتراضي أو المأخوذ من حقل إدخال
-    const userQuestion = "اقترح علي وجبة غداء مناسبة وفق نظام الطيبات.";
-
-    // القوانين كاملة ومدمجة في النظام
-    const systemPrompt = `
+    // إعدادات العرض
+    resultDiv.innerText = "";
+    loading.style.display = "block";
+    btn.disabled = true;
+const systemPrompt = `
     أنت المساعد الرسمي لمنهج "نظام الطيبات" للدكتور ضياء العوضي.
     مرجعك الوحيد هو القوائم التالية، لا تخرج عنها أبداً:
     
@@ -40,11 +40,6 @@ async function generateMeal() {
     - إذا سُئلت عن شيء غير موجود في القوائم أعلاه، اعتذر بوضوح لعدم توفر المعلومة في منهج النظام.
     - اختم دائماً بجملة: "هذه المعلومات قائمة على منهج نظام الطيبات للدكتور ضياء العوضي، ولا تغني عن التشخيص الطبي المتخصص".
     `;
-
-    resultDiv.innerText = "";
-    loading.style.display = "block";
-    btn.disabled = true;
-
     try {
         const response = await fetch(API_URL, {
             method: "POST",
@@ -53,10 +48,10 @@ async function generateMeal() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                message: userQuestion,
+                message: "اقترح لي خطة يوم كامل من نظام الطيبات.",
                 preamble: systemPrompt,
                 model: "command-r-08-2024",
-                temperature: 0.3 
+                temperature: 0.3
             })
         });
 
@@ -65,10 +60,12 @@ async function generateMeal() {
         if (data.text) {
             resultDiv.innerText = data.text;
         } else {
-            resultDiv.innerText = "حدث خطأ: " + (data.message || "تأكد من المفتاح والرصيد.");
+            resultDiv.innerText = "حدث خطأ في الاتصال، تأكد من رصيد الـ API.";
+            console.error(data);
         }
     } catch (error) {
-        resultDiv.innerText = "خطأ في الاتصال! تأكد من إضافة CORS Unblock للمتصفح.";
+        resultDiv.innerText = "خطأ في الاتصال! تأكد من تفعيل CORS.";
+        console.error(error);
     } finally {
         loading.style.display = "none";
         btn.disabled = false;
