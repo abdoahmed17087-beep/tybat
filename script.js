@@ -19,7 +19,7 @@ async function askAI() {
     loading.style.display = "block";
 
     // مفتاح الـ API (تأكد من تحديثه بمفتاحك الصحيح)
-    const API_KEY = "API_KEY"; 
+    const API_KEY = "U0A8uMriYhviQ5O60MarUJp4ZELM1MxUxCuFIekh"; 
     const API_URL = "https://api.cohere.ai/v1/chat"; 
 
     // التعليمات الثابتة لضبط هوية البوت
