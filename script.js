@@ -38,10 +38,6 @@ async function askAI() {
 
 
 
-    // مفتاح الـ API (تأكد من تحديثه بمفتاحك الصحيح)
-
-    const API_KEY = "U0A8uMriYhviQ5O60MarUJp4ZELM1MxUxCuFIekh"; 
-
     const API_URL = "https://api.cohere.ai/v1/chat"; 
 
 
