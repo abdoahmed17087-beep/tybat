@@ -2,19 +2,42 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>الطيبات | نظام الدكتور ضياء العوضي</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحفة الطيبات | د. ضياء العوضي</title>
     <link rel="stylesheet" href="style.css">
+    <!-- خط Cairo الفخم -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>الطيبات AI</h1>
-        <div class="main-card">
-            <input type="text" id="userInput" placeholder="مثال: هل الساندوتش مسموح؟">
-            <button id="generateBtn">اسأل النظام ✨</button>
-            <div id="loading" style="display: none;">جاري البحث في نظام الطيبات...</div>
+
+    <div class="artistic-container">
+        <div class="masterpiece-card">
+            
+            <div class="profile-section">
+                <div class="image-frame">
+                    <img src="dr-diaa.jpg" alt="الدكتور ضياء العوضي" class="doctor-image" onerror="this.src='https://via.placeholder.com/180/1a531c/cda434?text=Dr+Diaa'">
+                </div>
+                <div class="mercy-tag">رحمه الله</div>
+            </div>
+
+            <div class="header-text">
+                <h1 class="doctor-name">الأستاذ الدكتور ضياء الدين العوضي</h1>
+                <p class="system-title">مؤسس منهج ونظام الطيبات العالمي</p>
+            </div>
+
+            <div class="separator"></div>
+
+            <div class="search-box">
+                <input type="text" id="userInput" placeholder="مثال: هل تناول التمر مسموح؟">
+                <button id="generateBtn">اسأل النظام ✦</button>
+            </div>
+
+            <div id="loading" style="display: none; margin-top: 20px; color: #27ae60;">جاري استشارة نظام الطيبات...</div>
             <div id="mealResult"></div>
+
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
